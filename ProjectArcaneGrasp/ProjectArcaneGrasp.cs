@@ -17,6 +17,7 @@ namespace ProjectArcaneGrasp
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             string test = "TEST";
+            test = "Test 2?";
         }
 
         /// <summary>
