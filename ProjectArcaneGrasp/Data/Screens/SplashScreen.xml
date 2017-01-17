@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SplashScreen>
+  <BackgroundPaths>Textures/Backgrounds/splashImage1</BackgroundPaths>
+  <BackgroundPaths>Textures/Backgrounds/splashImage2</BackgroundPaths>
+</SplashScreen>

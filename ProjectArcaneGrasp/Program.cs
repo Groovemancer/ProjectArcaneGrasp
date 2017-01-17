@@ -14,7 +14,7 @@ namespace ProjectArcaneGrasp
         [STAThread]
         static void Main()
         {
-            using (var game = new ProjectArcaneGrasp())
+            using (var game = new MainGame())
                 game.Run();
         }
     }
