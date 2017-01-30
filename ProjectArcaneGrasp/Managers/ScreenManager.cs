@@ -41,20 +41,30 @@ namespace ProjectArcaneGrasp
         {
             Dimensions = new Vector2(1280, 720);
             currentScreen = new SplashScreen();
+            nextScreen = new GameplayScreen();
             xmlGameScreenManager = new XmlManager<GameScreen>();
             xmlGameScreenManager.Type = currentScreen.GetType();
             currentScreen = xmlGameScreenManager.Load("Data/Screens/SplashScreen.xml");
+            xmlGameScreenManager.Type = nextScreen.GetType();
+            nextScreen = xmlGameScreenManager.Load("Data/Screens/GameplayScreen.xml");
         }
 
         public void LoadContent(ContentManager Content)
         {
             this.Content = new ContentManager(Content.ServiceProvider, "Content");
             currentScreen.LoadContent();
+            nextScreen.LoadContent();
         }
 
         public void UnloadContent()
         {
             currentScreen.UnloadContent();
+        }
+
+        public void NextScreen()
+        {
+            currentScreen.UnloadContent();
+            currentScreen = nextScreen;
         }
 
         public void Update(GameTime gameTime)

@@ -17,7 +17,7 @@ namespace ProjectArcaneGrasp
         
         public string backgroundTexturePath;
         protected Texture2D backgroundTexture;
-
+        
         public GameScreen()
         {
         }
