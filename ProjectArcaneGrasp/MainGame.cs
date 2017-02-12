@@ -12,6 +12,8 @@ namespace ProjectArcaneGrasp
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static SpriteFont GameFont;
+
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -29,7 +31,12 @@ namespace ProjectArcaneGrasp
             graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
             graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
             graphics.ApplyChanges();
+            IsMouseVisible = true;
             base.Initialize();
+
+            Debug.Initialize();
+
+            //HexTile h = new HexTile(3, 0, 0, 0, 100, 100);
         }
 
         /// <summary>
@@ -40,6 +47,8 @@ namespace ProjectArcaneGrasp
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            Debug.LoadContent(Content);
             
             ScreenManager.Instance.SpriteBatch = spriteBatch;
             ScreenManager.Instance.LoadContent(Content);

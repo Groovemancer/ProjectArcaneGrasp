@@ -46,7 +46,8 @@ namespace ProjectArcaneGrasp
             xmlGameScreenManager.Type = currentScreen.GetType();
             currentScreen = xmlGameScreenManager.Load("Data/Screens/SplashScreen.xml");
             xmlGameScreenManager.Type = nextScreen.GetType();
-            nextScreen = xmlGameScreenManager.Load("Data/Screens/GameplayScreen.xml");
+            //nextScreen = xmlGameScreenManager.Load("Data/Screens/GameplayScreen.xml");
+            currentScreen = xmlGameScreenManager.Load("Data/Screens/GameplayScreen.xml");
         }
 
         public void LoadContent(ContentManager Content)

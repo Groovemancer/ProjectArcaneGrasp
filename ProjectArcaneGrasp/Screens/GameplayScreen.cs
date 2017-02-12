@@ -14,11 +14,14 @@ namespace ProjectArcaneGrasp
 {
     public class GameplayScreen : GameScreen
     {
+        /*
         TileMap myMap = new TileMap();
         int squaresAcross = 10;
         int squaresDown = 24;
         int baseOffsetX = -26;
         int baseOffsetY = -68;
+        */
+        HexTileMapLayer layer;
 
         public GameplayScreen()
         {
@@ -27,7 +30,10 @@ namespace ProjectArcaneGrasp
         public override void LoadContent()
         {
             base.LoadContent();
-            Tile.TilesetTexture = content.Load<Texture2D>("Textures/TileSets/HexTiles");
+            Texture2D tileset = content.Load<Texture2D>("Textures/TileSets/HexTiles");
+            layer = new HexTileMapLayer(tileset, 5, 5);
+            layer.PrintLayer();
+            layer.PrintScreenLayer();
         }
 
         public override void UnloadContent()
@@ -38,6 +44,8 @@ namespace ProjectArcaneGrasp
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            /*
 
             KeyboardState ks = Keyboard.GetState();
             int cameraSpeed = 5;
@@ -64,11 +72,16 @@ namespace ProjectArcaneGrasp
                 Camera.Location.Y = MathHelper.Clamp(Camera.Location.Y + cameraSpeed, 0,
                     (myMap.MapHeight - squaresDown) * Tile.TileStepY);
             }
+            */
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {            
             base.Draw(spriteBatch);
+
+            layer.Draw(spriteBatch);
+
+            /*
 
             Vector2 firstSquare = new Vector2(Camera.Location.X / Tile.TileStepX, Camera.Location.Y / Tile.TileStepY);
             int firstX = (int)firstSquare.X;
@@ -100,6 +113,7 @@ namespace ProjectArcaneGrasp
                     }
                 }
             }
+            */
         }
     }
 }

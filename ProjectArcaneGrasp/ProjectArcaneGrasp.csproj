@@ -44,6 +44,11 @@
     <Compile Include="Engine\Graphics\AnimatedSprite.cs" />
     <Compile Include="Engine\Graphics\SpriteSheet.cs" />
     <Compile Include="Engine\TileEngine\Camera.cs" />
+    <Compile Include="Engine\TileEngine\Coordinates.cs" />
+    <Compile Include="Engine\TileEngine\Hex.cs" />
+    <Compile Include="Engine\TileEngine\HexTile.cs" />
+    <Compile Include="Engine\TileEngine\HexTileMap.cs" />
+    <Compile Include="Engine\TileEngine\HexTileMapLayer.cs" />
     <Compile Include="Engine\TileEngine\MapCell.cs" />
     <Compile Include="Engine\TileEngine\TileMap.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
@@ -75,6 +80,7 @@
     <Content Include="Content\Textures\Backgrounds\test.png" />
     <Content Include="Content\Textures\Particles\BlackPixel.png" />
     <Content Include="Content\Textures\TileSets\HexTiles.png" />
+    <Content Include="Content\Textures\TileSets\HexTiles2.png" />
     <Content Include="Data\Screens\GameplayScreen.xml" />
     <Content Include="Data\Screens\SplashScreen.xml" />
     <Content Include="Icon.ico" />
@@ -83,6 +89,9 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
     <Content Include="Content\Fonts\Arial.spritefont">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Consolas.spritefont">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
