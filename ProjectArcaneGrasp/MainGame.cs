@@ -30,6 +30,7 @@ namespace ProjectArcaneGrasp
         {
             graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
             graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
+            //graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             IsMouseVisible = true;
             base.Initialize();
@@ -86,7 +87,7 @@ namespace ProjectArcaneGrasp
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront);
 
             ScreenManager.Instance.Draw(spriteBatch);
 

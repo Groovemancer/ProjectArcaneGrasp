@@ -30,8 +30,8 @@ namespace ProjectArcaneGrasp
         public override void LoadContent()
         {
             base.LoadContent();
-            Texture2D tileset = content.Load<Texture2D>("Textures/TileSets/HexTiles");
-            layer = new HexTileMapLayer(tileset, 5, 5);
+            Texture2D tileset = content.Load<Texture2D>("Textures/TileSets/HexTiles2");
+            layer = new HexTileMapLayer(tileset, 10, 10);
             layer.PrintLayer();
             layer.PrintScreenLayer();
         }

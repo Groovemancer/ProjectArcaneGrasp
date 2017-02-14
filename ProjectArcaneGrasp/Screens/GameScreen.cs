@@ -42,7 +42,7 @@ namespace ProjectArcaneGrasp
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (backgroundTexture != null)
-                spriteBatch.Draw(backgroundTexture, Vector2.Zero, Color.White);
+                spriteBatch.Draw(backgroundTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.99f);
         }
     }
 }

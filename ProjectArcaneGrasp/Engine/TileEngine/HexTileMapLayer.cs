@@ -30,12 +30,14 @@ namespace ProjectArcaneGrasp
                 {
                     int s = -q - r;
                     CubeCoord cube = new CubeCoord(q, r, s);
-                    int id = 1;
+                    int id = 0;
                     //if (q == 2 && r == -1 && s == -1) id = 1;
                     if (q == 3 && r == 1 && s == -4) id = 2;
                     if (q == 4 && r == 0 && s == -4) id = 5;
-                    layer.Add(new HexTile(cube, id, 100, 100, 48, 32, 35));
-                    hexTiles.Add(cube, new HexTile(cube, id, 100, 100, 48, 32, 35));
+                    //layer.Add(new HexTile(cube, id, 100, 100, 48, 32, 35));
+                    //hexTiles.Add(cube, new HexTile(cube, id, 100, 100, 48, 32, 35));
+                    layer.Add(new HexTile(cube, id, 160, 160, 77, 52, 56));
+                    hexTiles.Add(cube, new HexTile(cube, id, 160, 160, 77, 52, 56));
                 }
             }
         }
@@ -53,49 +55,17 @@ namespace ProjectArcaneGrasp
             foreach (HexTile hex in layer)
             {
                 Point p = hex.ScreenPos();
-                spriteBatch.Draw(tilesetTexture, new Vector2(p.X, p.Y), GetSourceRectangle(hex.TextureId, hex.Width, hex.Height), Color.White);
+                float depth = 1f / Math.Max(p.Y + hex.OffsetY, 1.1f);
+                spriteBatch.Draw(tilesetTexture, new Vector2(p.X, p.Y), GetSourceRectangle(hex.TextureId, hex.Width, hex.Height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
 
                 if (Debug.DebugText)
                 {
-                    int x = p.X + 28;
-                    int y = p.Y + 35 + hex.OffsetY;
+                    int x = p.X + (hex.Width / 4) + 6;
+                    int y = p.Y + ((hex.Height - hex.OffsetY) / 2) + hex.OffsetY - 4;
                     string text = hex.Q + "," + hex.R + "," + hex.S;
-                    spriteBatch.DrawString(Debug.DebugFont, text, new Vector2(x, y), Color.White);
+                    spriteBatch.DrawString(Debug.DebugFont, text, new Vector2(x, y), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
             }
-            /*
-            for (int q = minQ; q < maxQ; q++)
-            {
-                for (int r = minR; r < maxR; r++)
-                {
-                    for (int s = minS; s < maxS; s++)
-                    {
-                        HexTile h = GetHexTile(q, r, s);
-                        if (h == null)
-                            continue;
-                        Point p = h.ScreenPos();
-                        int id = h.TextureId;
-                        spriteBatch.Draw(tilesetTexture, new Vector2(p.X, p.Y), GetSourceRectangle(id, h.Width, h.Height), Color.White);
-                    }
-                }
-            }
-            */
-
-            /*
-
-            for (int q = 0; q < layerWidth; q++)
-            {
-                int qOffset = q >> 1;
-                for (int r = -qOffset; r < layerHeight - qOffset; r++)
-                {
-                    int s = -q - r;
-                    HexTile h = GetHexTile(q, r, s);
-                    Point p = h.ScreenPos();
-                    int id = h.TextureId;
-                    spriteBatch.Draw(tilesetTexture, new Vector2(p.X, p.Y), GetSourceRectangle(id, h.Width, h.Height), Color.White);                    
-                }
-            }
-            */
         }
 
         public HexTile GetHexTile(int q, int r, int s)
