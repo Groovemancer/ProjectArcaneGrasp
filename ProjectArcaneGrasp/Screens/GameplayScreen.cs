@@ -34,6 +34,7 @@ namespace ProjectArcaneGrasp
             layer = new HexTileMapLayer(tileset, 10, 10);
             layer.PrintLayer();
             layer.PrintScreenLayer();
+            layer.PrintHashCodes();
         }
 
         public override void UnloadContent()

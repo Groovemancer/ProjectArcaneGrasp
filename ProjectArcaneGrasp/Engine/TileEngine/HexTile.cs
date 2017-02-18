@@ -10,6 +10,7 @@ namespace ProjectArcaneGrasp
 {
     public class HexTile
     {
+        #region Properties
         public int TextureId
         {
             get;
@@ -17,6 +18,12 @@ namespace ProjectArcaneGrasp
         }
 
         public CubeCoord Pos
+        {
+            get;
+            private set;
+        }
+
+        public Point ScreenPos
         {
             get;
             private set;
@@ -75,8 +82,9 @@ namespace ProjectArcaneGrasp
                 return Pos.S;
             }
         }
-               
 
+        #endregion
+        
         public HexTile(CubeCoord cube, int textureId, int width, int height, int top, int stepY, int offsetY)
         {
             Pos = cube;
@@ -86,8 +94,20 @@ namespace ProjectArcaneGrasp
             Top = top;
             StepY = stepY;
             OffsetY = offsetY;
+            ScreenPos = CalculateScreenPos();
         }
 
+        private Point CalculateScreenPos()
+        {
+            OffsetCoord oc = CubeCoord.ConvertToOffset(Pos);
+            int x = (((Width - Top) / 2) + Top) * oc.X;
+            int y = Height * oc.Y + (StepY * (oc.X % 2)) - OffsetY - OffsetY * oc.Y;
+            return new Point(x, y);
+        }
+
+        /* OBSOLETE
+         * No longer calculating every frame for every tile.
+         * It's only calculated when tile is created since their position should never change
         public Point ScreenPos()
         {
             OffsetCoord oc = CubeCoord.ConvertToOffset(Pos);
@@ -98,12 +118,7 @@ namespace ProjectArcaneGrasp
             //int y = (int)(Height * (oc.Y + 0.5 * (oc.X & 1)));
 
             return new Point(x, y);
-
-            /*
-            int x = (((Width - Top) / 2) + Top) * Q;
-            int y = (int)(Height * (R + Q / 2));
-            return new Point(x, y);
-            */
         }
+        */
     }
 }

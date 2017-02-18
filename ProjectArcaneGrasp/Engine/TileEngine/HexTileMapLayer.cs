@@ -54,7 +54,7 @@ namespace ProjectArcaneGrasp
         {
             foreach (HexTile hex in layer)
             {
-                Point p = hex.ScreenPos();
+                Point p = hex.ScreenPos;
                 float depth = 1f / Math.Max(p.Y + hex.OffsetY, 1.1f);
                 spriteBatch.Draw(tilesetTexture, new Vector2(p.X, p.Y), GetSourceRectangle(hex.TextureId, hex.Width, hex.Height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
 
@@ -98,8 +98,17 @@ namespace ProjectArcaneGrasp
         {
             foreach (HexTile hexTile in layer)
             {
-                Point p = hexTile.ScreenPos();
+                Point p = hexTile.ScreenPos;
                 Debug.Log("Hex: " + p.X + ", " + p.Y);
+            }
+        }
+
+        public void PrintHashCodes()
+        {
+            foreach (KeyValuePair<CubeCoord, HexTile> hexPair in hexTiles)
+            {
+                int hashCode = hexTiles[hexPair.Key].GetHashCode();
+                Debug.Log("Hex Hash Code: " + hashCode);
             }
         }
     }

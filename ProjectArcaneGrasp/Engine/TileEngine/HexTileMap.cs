@@ -18,6 +18,7 @@ namespace ProjectArcaneGrasp
         {
             mapWidth = width;
             mapHeight = height;
+            layers = new List<HexTileMapLayer>();
         }
 
     }
